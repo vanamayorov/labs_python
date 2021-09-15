@@ -19,10 +19,12 @@ def main():
     parser.add_argument("args", nargs='*')
     opt = parser.parse_args()
 
+    # find a function from the numpy module
     func = getattr(np, opt.function)
+    # literal_eval func casts string elements of list into integers
     args = [ast.literal_eval(arg) for arg in opt.args]
 
-    # run the function and pass in the args, print the output to stdout
+    # runs the function and passes in the args, print the output to console
     print(func(*args))
 
 

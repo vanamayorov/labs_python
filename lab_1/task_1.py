@@ -15,18 +15,15 @@ import argparse
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description=__doc__)
+    # parse arguments
+    parser = argparse.ArgumentParser(description=__doc__)
 
-    parser.add_argument('firstNum', metavar='First num',
-                        help='first number')
-    parser.add_argument('op', metavar='Operator',
-                        help='arithmetic operator')
-    parser.add_argument('secondNum', metavar='Second num',
-                        help='second number')
+    parser.add_argument('firstNum', metavar='First num', help='first number')
+    parser.add_argument('op', metavar='Operator', help='arithmetic operator')
+    parser.add_argument('secondNum', metavar='Second num', help='second number')
 
     args = parser.parse_args()
-
+    # calculates result using eval function
     result = eval(args.firstNum + args.op + args.secondNum)
 
     print(result)
