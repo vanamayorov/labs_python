@@ -35,16 +35,20 @@ def main():
     string_output = ''
 
     # condition checks whether there are any elements in the string
-    if len(args.expression) > 0:
+    if args.expression:
         for index, char in enumerate(args.expression):
             # condition checks scenarios when formula isn`t correct according to EBNF syntax
-            if char in numbers or (char in signs and not args.expression[index + 1] in signs):
-                string_output += char
+            if index + 1 <= len(args.expression) and not args.expression[0] in signs \
+                    and not args.expression[len(args.expression) - 1] in signs:
+                if char in numbers or (char in signs and not args.expression[index + 1] in signs):
+                    string_output += char
+                else:
+                    string_output = None
+                    indicator = False
+                    break
             else:
-                string_output = None
                 indicator = False
-                break
-    # condition to print the result
+        # condition to print the result
         if indicator:
             print(f'result = ({indicator}, {eval(string_output)})')
         else:

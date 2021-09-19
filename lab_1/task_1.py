@@ -1,6 +1,6 @@
 # Task 1
 # Write a Python-script that performs simple arithmetic operations:
-# '+', '-', '*', '/'. The type of operator anddata are set on the
+# '+', '-', '*', '/'. The type of operator and data are set on the
 # command line when the script is run.The script should be
 # launched like this:
 # >>python my_task.py 1 * 2
@@ -12,6 +12,7 @@
 """
 
 import argparse
+import ast
 
 
 def main():
@@ -24,9 +25,13 @@ def main():
 
     args = parser.parse_args()
     # calculates result using eval function
-    result = eval(args.firstNum + args.op + args.secondNum)
-
-    print(result)
+    try:
+        if args.op not in ["+", "-", "/", "*"]:
+            raise Exception("choose from '+', '-', '/', '*'")
+        result = eval(args.firstNum + args.op + args.secondNum)
+        print(result)
+    except Exception as e:
+        print(e)
 
 
 if __name__ == '__main__':

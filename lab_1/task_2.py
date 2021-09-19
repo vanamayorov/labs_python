@@ -25,7 +25,12 @@ def main():
     args = [ast.literal_eval(arg) for arg in opt.args]
 
     # runs the function and passes in the args, print the output to console
-    print(func(*args))
+    np.seterr(all="raise")
+    try:
+        result = func(*args)
+        print(result)
+    except Exception as e:
+        print(e)
 
 
 if __name__ == "__main__":

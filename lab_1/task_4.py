@@ -49,9 +49,9 @@ def main():
     parser.add_argument("weights", help="List of available weights", nargs='*')
     args = parser.parse_args()
 
-    maxWeight = get_max_weight([ast.literal_eval(weight) for weight in args.weights], args.capacity)
+    max_weight = get_max_weight([ast.literal_eval(weight) for weight in args.weights], args.capacity)
 
-    print(f"Maximum weight that fits into a knapsack is {maxWeight} with capacity of {args.capacity}")
+    print(f"Maximum weight that fits into a knapsack is {max_weight} with capacity of {args.capacity}")
 
 
 if __name__ == "__main__":
