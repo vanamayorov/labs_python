@@ -12,7 +12,6 @@
 """
 
 import argparse
-import ast
 
 
 def main():
@@ -27,7 +26,7 @@ def main():
     # calculates result using eval function
     try:
         if args.op not in ["+", "-", "/", "*"]:
-            raise Exception("choose from '+', '-', '/', '*'")
+            raise Exception("Error, choose second argument from '+', '-', '/', '*'")
         result = eval(args.firstNum + args.op + args.secondNum)
         print(result)
     except Exception as e:
