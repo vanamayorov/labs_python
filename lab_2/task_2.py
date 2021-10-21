@@ -12,14 +12,14 @@ from math import gcd
 
 class Rational:
     def __init__(self, numerator=0, denominator=1):
-        if not denominator:
-            raise ZeroDivisionError("The denominator can`t be zero")
-
         if not isinstance(numerator, int):
             raise TypeError("The numerator must be an integer")
 
         if not isinstance(denominator, int):
             raise TypeError("The denominator must be an integer")
+
+        if not denominator:
+            raise ZeroDivisionError("The denominator can`t be zero")
 
         self.numerator = numerator // gcd(numerator, denominator)
         self.denominator = denominator // gcd(numerator, denominator)
