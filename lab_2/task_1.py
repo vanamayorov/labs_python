@@ -2,47 +2,57 @@
 # Provide methods that calculate the perimeter and the area of the rectangle.
 # Also, provide setter and getter for the length and width attributes.
 # The setter should verify that length and width are each floating-point numbers larger than 0.0 and less than 20.0.
+"""Script with a rectangle class"""
+
 
 class Rectangle:
-
+    """Rectangle class with setters, getters, get perimeter, and get area methods"""
     def __init__(self, length=1, width=1):
-        self.length = self.set_length(length)
-        self.width = self.set_width(width)
+        self.length = length
+        self.width = width
 
     def get_perimeter(self):
+        """Get perimeter
+
+        Returns perimeter of a rectangle"""
         return round((self.width + self.length) * 2, 3)
 
     def get_area(self):
+        """Get area
+
+        Returns area of a rectangle"""
         return self.width * self.length
 
-    def get_width(self):
-        return self.width
+    @property
+    def width(self):
+        return self.__width
 
-    def get_length(self):
-        return self.length
-
-    @staticmethod
-    def set_width(self, width):
+    @width.setter
+    def width(self, width):
         if not isinstance(width, int):
             raise TypeError("Invalid type or value of width, try again")
 
         if not width > 0 and not width < 20:
             raise ValueError("Value interval for width between 0 and 20")
 
-        return width
+        self.__width = width
 
-    @staticmethod
-    def set_length(self, length):
+    @property
+    def length(self):
+        return self.__length
+
+    @length.setter
+    def length(self, length):
         if not isinstance(length, int):
             raise TypeError("Invalid type or value of width, try again")
 
         if not length > 0 and not length < 20:
             raise ValueError("Value interval for length between 0 and 20")
 
-        return length
+        self.__length = length
 
     def __str__(self):
-        return "length = {}, width = {}".format(self.get_length(), self.get_width())
+        return "length = {}, width = {}".format(self.length, self.width)
 
 
 def main():

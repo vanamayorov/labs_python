@@ -9,8 +9,12 @@
 # - printing Rational numbers in floating-point format.
 from math import gcd
 
+"""Script with Rational class which performs arithmetic with fractions"""
+
 
 class Rational:
+    """Rational class with methods which perform arithmetic operations with fractions"""
+
     def __init__(self, numerator=0, denominator=1):
         if not isinstance(numerator, int):
             raise TypeError("The numerator must be an integer")
