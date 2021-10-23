@@ -9,19 +9,36 @@ class BinaryTree:
     """BinaryTree class with insert and get price methods"""
 
     def __init__(self, product_code, price):
+        self.left = None
+        self.right = None
+        self.product_code = product_code
+        self.price = price
+
+    @property
+    def product_code(self):
+        return self.__product_code
+
+    @product_code.setter
+    def product_code(self, product_code):
         if not isinstance(product_code, int):
             raise TypeError("Product code must be a digit")
         if product_code <= 0:
             raise ValueError("Product code must be a positive number")
 
+        self.__product_code = product_code
+
+    @property
+    def price(self):
+        return self.__price
+
+    @price.setter
+    def price(self, price):
         if not isinstance(price, int):
             raise TypeError("Price must be a digit")
         if price <= 0:
             raise ValueError("Price must be a positive number")
-        self.left = None
-        self.right = None
-        self.product_code = product_code
-        self.price = price
+
+        self.__price = price
 
     def insert(self, product_code, price):
         """Insert product to the binary tree"""
@@ -44,13 +61,13 @@ class BinaryTree:
         if product_code < self.product_code:
             if not self.left:
                 raise ValueError(f'{product_code} was not found')
-            else:
-                return self.left.get_price(product_code)
+
+            return self.left.get_price(product_code)
         elif product_code > self.product_code:
             if not self.right:
                 raise ValueError(f'{product_code} was not found')
-            else:
-                return self.right.get_price(product_code)
+
+            return self.right.get_price(product_code)
         else:
             return self.price
 

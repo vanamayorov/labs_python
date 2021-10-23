@@ -1,6 +1,6 @@
 readme.txt Info:
 Num of words: 182
-Num of chars: 1248
+Num of chars: 1261
 Num of sentences: 23
 Num of each word:
 lorem - 1

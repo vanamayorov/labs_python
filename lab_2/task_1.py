@@ -7,21 +7,10 @@
 
 class Rectangle:
     """Rectangle class with setters, getters, get perimeter, and get area methods"""
+
     def __init__(self, length=1, width=1):
         self.length = length
         self.width = width
-
-    def get_perimeter(self):
-        """Get perimeter
-
-        Returns perimeter of a rectangle"""
-        return round((self.width + self.length) * 2, 3)
-
-    def get_area(self):
-        """Get area
-
-        Returns area of a rectangle"""
-        return self.width * self.length
 
     @property
     def width(self):
@@ -32,7 +21,7 @@ class Rectangle:
         if not isinstance(width, int):
             raise TypeError("Invalid type or value of width, try again")
 
-        if not width > 0 and not width < 20:
+        if width < 0 or width > 20:
             raise ValueError("Value interval for width between 0 and 20")
 
         self.__width = width
@@ -46,10 +35,22 @@ class Rectangle:
         if not isinstance(length, int):
             raise TypeError("Invalid type or value of width, try again")
 
-        if not length > 0 and not length < 20:
+        if length < 0 or length > 20:
             raise ValueError("Value interval for length between 0 and 20")
 
         self.__length = length
+
+    def get_perimeter(self):
+        """Get perimeter
+
+        Returns perimeter of a rectangle"""
+        return round((self.width + self.length) * 2, 3)
+
+    def get_area(self):
+        """Get area
+
+        Returns area of a rectangle"""
+        return self.width * self.length
 
     def __str__(self):
         return "length = {}, width = {}".format(self.length, self.width)

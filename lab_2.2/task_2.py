@@ -10,9 +10,18 @@ class FileParser:
     """FileParser class with count words, count chars, count sentences, and get words dictionary methods"""
 
     def __init__(self, path):
+        self.path = path
+
+    @property
+    def path(self):
+        return self.__path
+
+    @path.setter
+    def path(self, path):
         if not os.path.exists(path):
             raise FileNotFoundError
-        self.path = path
+
+        self.__path = path
 
     def count_words(self):
         """Count words
@@ -22,7 +31,9 @@ class FileParser:
         words_num = 0
         with open(self.path, encoding='utf-8') as f:
             for line in f:
-                words_num += len(line.split())
+                word_list = line.replace(',', '').replace('.', '').split()
+
+                words_num += len(word_list)
 
         return words_num
 
@@ -62,7 +73,7 @@ class FileParser:
         word_counter = {}
         with open(self.path, encoding='utf-8') as f:
             for line in f:
-                word_list = line.replace(',', '').replace('\'', '').replace('.', '').lower().split()
+                word_list = line.replace(',', '').replace('.', '').lower().split()
                 for word in word_list:
                     if word not in word_counter:
                         word_counter[word] = 1

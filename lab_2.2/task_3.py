@@ -120,7 +120,7 @@ class Group:
         if not isinstance(students, list):
             raise TypeError("Students must be a list")
         if len(students) > Group.__MAX_QTY_OF_STUDENTS:
-            raise ValueError(f"Group cannot contain more than {Group.__MAX_QTY_OF_STUDENTS} students")
+            raise OverflowError(f"Group cannot contain more than {Group.__MAX_QTY_OF_STUDENTS} students")
         if not all(isinstance(student, Student) for student in students):
             raise TypeError("All students must be instances of Student class")
         self.d = {f'{student.name} {student.surname}': student for student in students}
@@ -145,6 +145,9 @@ class Group:
 
         if f"{student.name} {student.surname}" in self.d:
             raise ValueError("Student with the same name and surname already exists in group")
+
+        if len(self.students_list) + 1 > 20:
+            raise OverflowError(f"Group cannot contain more than {Group.__MAX_QTY_OF_STUDENTS} students")
 
         self.d.update({f"{student.name} {student.surname}": student})
         self.students_list.append(student)
