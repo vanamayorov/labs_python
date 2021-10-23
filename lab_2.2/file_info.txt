@@ -1,7 +1,7 @@
 readme.txt Info:
-Num of words: 182
-Num of chars: 1261
-Num of sentences: 23
+Num of words: 183
+Num of chars: 1303
+Num of sentences: 24
 Num of each word:
 lorem - 1
 ipsum - 3
@@ -10,7 +10,11 @@ sit - 3
 amet - 3
 consectetur - 2
 adipiscing - 1
-elit!quisque - 1
+elit! - 1
+* - 4
+"" - 1
+@ - 4
+quisque - 1
 fringilla - 2
 lacus - 4
 tincidunt - 4
