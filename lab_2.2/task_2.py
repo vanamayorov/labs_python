@@ -31,7 +31,7 @@ class FileParser:
         words_num = 0
         with open(self.path, encoding='utf-8') as f:
             for line in f:
-                word_list = re.findall(r'\w+', line)
+                word_list = re.findall(r'[\'\-\w]+', line)
                 # \w matches a word character [a-zA-Z0-9_]
 
                 words_num += len(word_list)

@@ -1,0 +1,71 @@
+{
+  "monday": {
+    "name": "Cheese Pizza",
+    "price": 100,
+    "ingredients": [
+      "parmesan",
+      "mozzarella",
+      "garlic"
+    ]
+  },
+  "tuesday": {
+    "name": "Veggie Pizza",
+    "price": 150,
+    "ingredients": [
+      "cherry tomatoes",
+      "artichoke",
+      "red onion",
+      "mozzarella"
+    ]
+  },
+  "wednesday": {
+    "name": "Pepperoni Pizza",
+    "price": 200,
+    "ingredients": [
+      "beef",
+      "paprika",
+      "pork",
+      "mozzarella"
+    ]
+  },
+  "thursday": {
+    "name": "Meat Pizza",
+    "price": 200,
+    "ingredients": [
+      "pepperoni",
+      "bacon",
+      "ham",
+      "mozzarella"
+    ]
+  },
+  "friday": {
+    "name": "Margherita Pizza",
+    "price": 100,
+    "ingredients": [
+      "san marzano tomato sauce",
+      "basil",
+      "olive oil",
+      "mozzarella"
+    ]
+  },
+  "saturday": {
+    "name": "BBQ Chicken Pizza",
+    "price": 150,
+    "ingredients": [
+      "bbq sauce",
+      "chicken",
+      "cheese",
+      "red onion"
+    ]
+  },
+  "sunday": {
+    "name": "Hawaiian Pizza",
+    "price": 250,
+    "ingredients": [
+      "sauce",
+      "cheese",
+      "pineapple",
+      "cooked ham"
+    ]
+  }
+}

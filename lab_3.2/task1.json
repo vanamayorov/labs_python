@@ -1,0 +1,7 @@
+{
+  "num0fTickets": 10,
+  "price": 100,
+  "student_coefficient": 0.5,
+  "advance_coefficient": 0.4,
+  "late_coefficient": 1.1
+}

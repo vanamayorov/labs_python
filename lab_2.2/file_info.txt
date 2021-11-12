@@ -1,19 +1,16 @@
 readme.txt Info:
-Num of words: 183
-Num of chars: 1303
+Num of words: 182
+Num of chars: 1297
 Num of sentences: 24
 Num of each word:
+@ - 3
+* - 5
+^ - 4
 lorem - 1
 ipsum - 3
 dolor - 2
-sit - 3
-amet - 3
-consectetur - 2
-adipiscing - 1
+sit-ametconsecteturadipiscing - 1
 elit! - 1
-* - 4
-"" - 1
-@ - 4
 quisque - 1
 fringilla - 2
 lacus - 4
@@ -44,6 +41,8 @@ vitae - 2
 leo - 1
 gravida - 1
 velit - 1
+sit - 2
+amet - 2
 consequat - 4
 erat - 4
 nam - 1
@@ -63,6 +62,7 @@ sodales - 1
 felis - 3
 ornare - 3
 metus - 1
+consectetur - 1
 elementum - 1
 tristique - 3
 dui - 3
