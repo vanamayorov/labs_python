@@ -65,6 +65,7 @@ class RegularTicket:
             "price": self.get_ticket_price()
         }
 
+    @property
     def get_ticket_price(self):
         return self.__PRICE
 
@@ -90,6 +91,7 @@ class AdvanceTicket(RegularTicket):
 
         cls.__COEFFICIENT = content['advance_coefficient']
 
+    @property
     def get_ticket_price(self):
         return round(super().get_ticket_price() * AdvanceTicket.__COEFFICIENT)
 
@@ -108,6 +110,7 @@ class StudentTicket(RegularTicket):
 
         cls.__COEFFICIENT = content['student_coefficient']
 
+    @property
     def get_ticket_price(self):
         return round(super().get_ticket_price() * StudentTicket.__COEFFICIENT)
 
@@ -126,6 +129,7 @@ class LateTicket(RegularTicket):
 
         cls.__COEFFICIENT = content['late_coefficient']
 
+    @property
     def get_ticket_price(self):
         return round(super().get_ticket_price() * LateTicket.__COEFFICIENT)
 
