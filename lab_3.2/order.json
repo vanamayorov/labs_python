@@ -1,0 +1,48 @@
+[
+  {
+    "orderId": 1,
+    "price": 345,
+    "products": [
+      {
+        "pizzaName": "Veggie Pizza",
+        "pizzaPrice": 195,
+        "pizzaIngredients": [
+          "cherry tomatoes",
+          "artichoke",
+          "red onion",
+          "mozzarella",
+          "tomatoes",
+          "bacon"
+        ]
+      },
+      {
+        "pizzaName": "Veggie Pizza",
+        "pizzaPrice": 150,
+        "pizzaIngredients": [
+          "cherry tomatoes",
+          "artichoke",
+          "red onion",
+          "mozzarella"
+        ]
+      }
+    ]
+  },
+  {
+    "orderId": 2,
+    "price": 195,
+    "products": [
+      {
+        "pizzaName": "Veggie Pizza",
+        "pizzaPrice": 195,
+        "pizzaIngredients": [
+          "cherry tomatoes",
+          "artichoke",
+          "red onion",
+          "mozzarella",
+          "tomatoes",
+          "bacon"
+        ]
+      }
+    ]
+  }
+]

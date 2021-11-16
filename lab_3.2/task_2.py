@@ -3,17 +3,27 @@
 # types of pizza.
 # Also, customers can add extra ingredients to the pizza-of-the-day. Write a program that will form
 # orders from customers.
+
+# 7 classes of pizza
+# get day in system time
+# find out what is a factory and how it can be implemented in this task
 import json
 import os
+from datetime import date
+import calendar
 
 
 class PizzaOfTheDay:
+    __pizza_data = {}
 
     def __init__(self, day):
-        self.pizza_obj = PizzaOfTheDay.__pizza_data[day]
-        self.pizza_name = self.pizza_obj['name']
-        self.pizza_price = self.pizza_obj['price']
-        self.pizza_ingredients = self.pizza_obj['ingredients']
+        self.__pizza_obj = PizzaOfTheDay.__pizza_data[day]
+        self.pizza_name = self.__pizza_obj['name']
+        self.pizza_price = self.__pizza_obj['price']
+        self.pizza_ingredients = []
+        for item in self.__pizza_obj['ingredients']:
+            self.pizza_ingredients.append(item)
+        self.pizza_day = day
 
     @classmethod
     def get_data(cls, path):
@@ -49,6 +59,14 @@ class PizzaOfTheDay:
     def pizza_ingredients(self, pizza_ingredients):
         self.__pizza_ingredients = pizza_ingredients
 
+    @property
+    def pizza_day(self):
+        return self.__pizza_day
+
+    @pizza_day.setter
+    def pizza_day(self, pizza_day):
+        self.__pizza_day = pizza_day
+
     def add_ingredients(self, args: dict):
         if not isinstance(args, dict):
             raise TypeError("Args must be a dictionary")
@@ -56,8 +74,6 @@ class PizzaOfTheDay:
         for item in args:
             self.pizza_ingredients.append(item)
             self.pizza_price += args[item]
-
-        return self
 
     def get_pizza_data(self):
         data = {
@@ -69,10 +85,66 @@ class PizzaOfTheDay:
         return data
 
     def __str__(self):
-        return f'Pizza name: {self.pizza_name}, price: {self.pizza_price}, ingredients: {", ".join(self.pizza_ingredients)}'
+        return f'Pizza name: {self.pizza_name}, price: {self.pizza_price}, ingredients: {", ".join(self.pizza_ingredients)}, pizza day: {self.pizza_day}'
+
+
+class MondayPizza(PizzaOfTheDay):
+    def __init__(self, day):
+        super().__init__(day)
+
+
+class TuesdayPizza(PizzaOfTheDay):
+    def __init__(self, day):
+        super().__init__(day)
+
+
+class WednesdayPizza(PizzaOfTheDay):
+    def __init__(self, day):
+        super().__init__(day)
+
+
+class ThursdayPizza(PizzaOfTheDay):
+    def __init__(self, day):
+        super().__init__(day)
+
+
+class FridayPizza(PizzaOfTheDay):
+    def __init__(self, day):
+        super().__init__(day)
+
+
+class SaturdayPizza(PizzaOfTheDay):
+    def __init__(self, day):
+        super().__init__(day)
+
+
+class SundayPizza(PizzaOfTheDay):
+    def __init__(self, day):
+        pass
+
+
+class PizzaFactory:
+    @staticmethod
+    def get_pizza_by_day(day: str):
+        pizza_dict = {
+            "monday": MondayPizza,
+            "tuesday": TuesdayPizza,
+            "wednesday": WednesdayPizza,
+            "thursday": ThursdayPizza,
+            "friday": FridayPizza,
+            "saturday": SaturdayPizza,
+            "sunday": SundayPizza
+        }
+
+        if day not in pizza_dict:
+            raise ValueError("Such day doesn`t exist")
+
+        return pizza_dict[day](day)
 
 
 class Order:
+    __order_id = 0
+
     def __init__(self, args):
         if not all(isinstance(item, PizzaOfTheDay) for item in args):
             raise TypeError("Pizzas in argument aren`t instances of PizzaOfTheDay classes")
@@ -114,24 +186,39 @@ class Order:
             del self.products_info[pizza]
 
     def create_json(self, filename):
-
+        Order.__order_id += 1
         data = {
+            "orderId": Order.__order_id,
             "price": self.calculate_value(),
             "products": list(map(lambda x: x.get_pizza_data(), self.products_info))
         }
 
-        with open(filename, 'w') as f:
-            json.dump(data, f, indent=2)
+        if Order.__order_id == 1:
+            with open(filename, 'w') as f:
+                json.dump([data], f, indent=2)
+        else:
+            with open(filename, 'r') as f:
+                data_json = json.load(f)
 
-    def __str__(self):
-        return f'{self.calculate_value()}, {self.get_products_info()}'
+            data_json.append(data)
+
+            with open(filename, 'w') as f:
+                json.dump(data_json, f, indent=2)
+
+
+def __str__(self):
+    return f'{self.calculate_value()}, {self.get_products_info()}'
 
 
 def main():
     PizzaOfTheDay.get_data("task2.json")
-    pizza = PizzaOfTheDay("saturday")
+    week_day = calendar.day_name[date.today().weekday()].lower()
+    pizza = PizzaFactory.get_pizza_by_day(week_day)
     pizza.add_ingredients({"tomatoes": 15, "bacon": 30})
-    Order([pizza, PizzaOfTheDay("saturday")]).create_json("test.json")
+    pizza2 = PizzaFactory.get_pizza_by_day(week_day)
+    order_file = "order.json"
+    Order([pizza, pizza2]).create_json(order_file)
+    Order([pizza]).create_json(order_file)
 
 
 if __name__ == "__main__":
