@@ -120,7 +120,7 @@ class SaturdayPizza(PizzaOfTheDay):
 
 class SundayPizza(PizzaOfTheDay):
     def __init__(self, day):
-        pass
+        super().__init__(day)
 
 
 class PizzaFactory:
