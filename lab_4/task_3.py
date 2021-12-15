@@ -23,6 +23,36 @@ class ITeacher(ABC):
     def __str__(self):
         pass
 
+    @property
+    @abstractmethod
+    def name(self):
+        pass
+
+    @name.setter
+    @abstractmethod
+    def name(self, name):
+        pass
+
+    @property
+    @abstractmethod
+    def course_id(self):
+        return self.__course_id
+
+    @course_id.setter
+    @abstractmethod
+    def course_id(self, course_id):
+        pass
+
+    @property
+    @abstractmethod
+    def teacher_id(self):
+        pass
+
+    @teacher_id.setter
+    @abstractmethod
+    def teacher_id(self, teacher_id):
+        pass
+
 
 class Teacher(ITeacher):
     def __init__(self, name, course_id, teacher_id):
@@ -78,8 +108,53 @@ class Teacher(ITeacher):
 
 # interface
 class ICourse(ABC):
+    @property
     @abstractmethod
-    def create(self):
+    def name(self):
+        pass
+
+    @name.setter
+    @abstractmethod
+    def name(self, name):
+        pass
+
+    @property
+    @abstractmethod
+    def teacher_obj(self):
+        pass
+
+    @teacher_obj.setter
+    @abstractmethod
+    def teacher_obj(self, teacher_obj):
+        pass
+
+    @property
+    @abstractmethod
+    def course_id(self):
+        pass
+
+    @course_id.setter
+    @abstractmethod
+    def course_id(self, course_id):
+        pass
+
+    @property
+    @abstractmethod
+    def program_id(self):
+        pass
+
+    @program_id.setter
+    @abstractmethod
+    def program_id(self, program_id):
+        pass
+
+    @abstractmethod
+    def type_id(self):
+        pass
+
+    @type_id.setter
+    @abstractmethod
+    def type_id(self, type_id):
         pass
 
 
@@ -98,7 +173,7 @@ class ILocalCourse(ABC):
 # 1 - local
 # 2 - offsite
 
-class Course:
+class Course(ICourse):
     def __init__(self, name, teacher_obj, program_id, course_id, type_id):
         self.name = name
         self.teacher_obj = teacher_obj
