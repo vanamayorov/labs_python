@@ -5,6 +5,7 @@ from lab_4.task3 import config
 
 
 class Course(ICourse):
+    """The class that describes simple course."""
     def __init__(self, name, teacher_obj, program_id, course_id, type_id):
         self.name = name
         self.teacher_obj = teacher_obj

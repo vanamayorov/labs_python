@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 
 
 class ICourseFactory(ABC):
+    """An interface of the teachers and courses factory."""
     @staticmethod
     @abstractmethod
     def create_teacher(name, course_id, teacher_id):

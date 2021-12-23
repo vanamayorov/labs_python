@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 
 
 class ITeacher(ABC):
+    """An interface of the teacher in the software academy."""
     @abstractmethod
     def __init__(self):
         pass

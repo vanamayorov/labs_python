@@ -3,6 +3,7 @@ from lab_4.task3.interfaces.iteacher import ITeacher
 
 
 class Teacher(ITeacher):
+    """The class that describes teacher."""
     def __init__(self, name, course_id, teacher_id):
         self.name = name
         self.course_id = course_id

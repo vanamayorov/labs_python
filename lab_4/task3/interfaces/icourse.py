@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 
 
 class ICourse(ABC):
+    """The interface of the course in the software academy."""
     @property
     @abstractmethod
     def name(self):

@@ -7,6 +7,7 @@ from lab_4.task3 import config
 
 
 class CourseFactory(ICourseFactory):
+    """The factory class that create a new teacher and a new course."""
     @staticmethod
     def create_teacher(name, course_id, teacher_id):
         with Database(config.db_path) as db:
@@ -23,7 +24,7 @@ class CourseFactory(ICourseFactory):
 
         return teacher
 
-    # name, teacher_obj, program_id, course_id, type_id
+
     @staticmethod
     def form_course(name, teacher_obj, program_id, course_id, type_id):
         course_dict = {

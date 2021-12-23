@@ -2,6 +2,7 @@ import sqlite3
 
 
 class Database:
+    """The class that describes database."""
     def __init__(self, name):
         self._conn = sqlite3.connect(name)
         self._cursor = self._conn.cursor()
